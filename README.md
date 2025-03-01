@@ -1,26 +1,30 @@
-# LSTM Computation Example - New Approach
+# Understanding LSTM Step-by-Step
 
 ## Introduction
-This project presents an alternative implementation of an LSTM cell computation using Python. The approach follows the standard LSTM process, computing forget gates, input gates, candidate values, cell state updates, and output gates to generate a final prediction.
+LSTMs (Long Short-Term Memory networks) are a type of recurrent neural network (RNN) designed to process sequential data. This project provides a basic numerical example of how an LSTM processes inputs without relying on external machine learning frameworks.
 
-## Project Structure
-- `lstm_example_v4.py`: Python script performing LSTM calculations step-by-step.
-- `README_v4.md`: Documentation explaining the logic and execution process.
+## What This Project Covers
+- Explanation of LSTM cell computations
+- Manual calculation of gates and cell state updates
+- Generating a prediction based on processed sequential data
 
-## Requirements
-- Python 3.x
-- NumPy
+## Files Included
+- `lstm_example_v4.py`: A Python script implementing LSTM calculations manually.
+- `README_v5.md`: Documentation explaining the logic behind the implementation.
 
-## Running the Script
-1. Ensure Python is installed on your system.
-2. Install NumPy if necessary:
-   ```sh
-   pip install numpy
-   ```
-3. Execute the script:
-   ```sh
-   python lstm_example_v4.py
-   ```
+## How It Works
+At each time step, the LSTM processes an input value and updates its cell state and hidden state based on pre-defined weights and biases. The main steps include:
+1. **Forget Gate** - Determines which past information should be retained.
+2. **Input Gate** - Decides what new information to add.
+3. **Cell State Update** - Updates the memory of the cell.
+4. **Output Gate** - Generates the hidden state for the next step.
 
-## Expected Output
-The script will display the calculated hidden state and cell state for each step, followed by the final output prediction.
+## Example Calculation
+Here’s a simple equation representing the forget gate in the LSTM:
+```python
+forget_gate = 1 / (1 + np.exp(-(Wf * input_val + Uf * hidden_state + bf)))
+```
+This equation applies the sigmoid activation function to compute how much of the previous cell state should be kept.
+
+## Why This Matters
+Understanding LSTMs at a mathematical level provides insights into how deep learning models process sequential data like text, time series, and speech. This example simplifies LSTM computations to highlight their core functionality without requiring TensorFlow or PyTorch.
